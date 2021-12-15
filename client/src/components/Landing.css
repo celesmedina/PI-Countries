@@ -1,0 +1,55 @@
+/* .mapa {
+  background-size: auto;
+}
+
+.bienvenida {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+} */
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+.full {
+  width: 100%;
+  height: 100%;
+  background: url(../images/mapa.jpeg) no-repeat 50% 50%;
+  background-size: cover;
+  display: table;
+  margin: 0;
+  top: 0;
+}
+
+.full-inner {
+  width: 100%;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.content {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.content h1 {
+  font-family: "Century Gothic", sans-serif;
+  font-size: 500%;
+  color: whitesmoke;
+  text-shadow: 0 0 300px black;
+}
+
+.content a {
+  border-radius: 9px;
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: "Century Gothic", sans-serif;
+  font-weight: bold;
+  border: 3px solid;
+  padding: 7px 13px;
+}

@@ -1,7 +1,9 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { getCountryByID } from "../actions/Actions";
+import "./Country.css";
+
 function Country(props) {
   const { id } = useParams();
   useEffect(() => {
@@ -11,7 +13,7 @@ function Country(props) {
   if (!props.country) return "loading...";
 
   return (
-    <div class="card">
+    <div class="card-country">
       <div class="country-name">
         <p> {props.country.nombre}</p>
       </div>
@@ -47,12 +49,15 @@ function Country(props) {
             );
           })
         ) : (
-          <p>"This country doesn't have activities yet"</p>
+          <p>Este país no tiene actividades creadas</p>
         )}
       </div>
       {/* - [ ] Código de país de 3 letras (id) - [ ] Capital - [ ] Subregión - [ ]
       Área (Mostrarla en km2 o millones de km2) - [ ] Población - [ ]
       Actividades turísticas con toda su información asociada */}
+      <button>
+        <NavLink to="/countries">Atrás</NavLink>
+      </button>
     </div>
   );
 }

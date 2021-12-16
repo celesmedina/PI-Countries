@@ -145,23 +145,23 @@ module.exports = {
   //     return countries;
   //   }
   // },
-  // async getCountryByID(id) {
-  //   const registerCountry = await Country.findOne({
-  //     where: { id: id },
-  //     include: Turistic_activity,
-  //   });
-  //   let result = {
-  //     id: registerCountry.id,
-  //     nombre: registerCountry.nombre,
-  //     imagen: registerCountry.imagen,
-  //     capital: registerCountry.capital,
-  //     subregion: registerCountry.subregion,
-  //     area: registerCountry.area,
-  //     poblacion: registerCountry.poblacion,
-  //     actividadesTuristicas: registerCountry.turistic_activities,
-  //   };
-  //   return result;
-  // },
+  async getCountryByID(id) {
+    const registerCountry = await Country.findOne({
+      where: { id: id },
+      include: Turistic_activity,
+    });
+    let result = {
+      id: registerCountry.id,
+      nombre: registerCountry.nombre,
+      imagen: registerCountry.imagen,
+      capital: registerCountry.capital,
+      subregion: registerCountry.subregion,
+      area: registerCountry.area,
+      poblacion: registerCountry.poblacion,
+      actividadesTuristicas: registerCountry.turistic_activities,
+    };
+    return result;
+  },
   // async getCountries() {
   //   try {
   //     const register = await Country.findAll();

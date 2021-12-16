@@ -1,13 +1,50 @@
+@font-face {
+  font-family: "Circular Medium";
+  src: url(./fonts/circular/circular-medium.ttf);
+}
+
+@font-face {
+  font-family: "Circular Book";
+  src: url(./fonts/circular/circular-book.otf);
+}
+
+@font-face {
+  font-family: "Circular Bold";
+  src: url(./fonts/circular/circular-bold.otf);
+}
+
+@font-face {
+  font-family: "Circular Light";
+  src: url(./fonts/circular/circular-light.ttf);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Circular Medium", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  font-family: "Circular Medium", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+/* body {
+  margin: 10px;
+  width: 100%;
+  height: 100%;
+} */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+body {
+  line-height: 1.5;
+  background-color: #fcfcfe;
+  /* padding: 0 2rem; */
 }

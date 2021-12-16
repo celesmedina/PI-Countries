@@ -30,88 +30,86 @@ function Forms(props) {
   const dispatch = useDispatch();
 
   return (
-    <div class="container">
+    <div class="card-form">
+      <div class="card-image">
+        <h2 class="card-heading">Creá actividades por país</h2>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(createActivity(form));
         }}
+        class="card-form"
       >
-        <div class="row">
-          <div class="col-25">
-            <label for="fname">Nombre</label>
-          </div>
-          <div class="col-75">
-            <input
-              required
-              type="text"
-              id="fname"
-              name="nombre"
-              placeholder="Tu nombre"
-              onChange={handleChange}
-            />
-          </div>
+        <div class="input">
+          <label class="input-label">Nombre de la actividad</label>
+          <input
+            required
+            type="text"
+            id="fname"
+            name="nombre"
+            class="input-field"
+            onChange={handleChange}
+          />
         </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Duración (en horas)</label>
-          </div>
-          <div class="col-75">
-            <input
-              required
-              min="0"
-              type="number"
-              id="lname"
-              name="duracion"
-              placeholder="Duración de la actividad"
-              onChange={handleChange}
-            />
-          </div>
+        <div class="input">
+          <label class="input-label">Duración (en horas)</label>
+
+          <input
+            required
+            min="0"
+            type="number"
+            id="lname"
+            name="duracion"
+            class="input-field"
+            onChange={handleChange}
+          />
         </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="dificultad">Dificultad</label>
-          </div>
-          <div class="col-75">
-            <select id="dificultad" name="dificultad" onChange={handleChange}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
+        <div class="input">
+          <label class="input-label">Dificultad</label>
+
+          <select
+            id="dificultad"
+            name="dificultad"
+            class="input-field"
+            onChange={handleChange}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="temporada">Temporada</label>
-          </div>
-          <div class="col-75">
-            <select id="temporada" name="temporada" onChange={handleChange}>
-              <option value="Verano">Verano</option>
-              <option value="Otoño">Otoño</option>
-              <option value="Primavera">Primavera</option>
-              <option value="Invierno">Invierno</option>
-            </select>
-          </div>
+        <div class="input">
+          <label class="input-label">Temporada</label>
+
+          <select
+            id="temporada"
+            class="input-field"
+            name="temporada"
+            onChange={handleChange}
+          >
+            <option value="Verano">Verano</option>
+            <option value="Otoño">Otoño</option>
+            <option value="Primavera">Primavera</option>
+            <option value="Invierno">Invierno</option>
+          </select>
         </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="countries">Países de la actividad</label>
-          </div>
-          <div class="col-75">
-            <select
-              required
-              name="countries"
-              id="countries"
-              onChange={handleChangeCountries}
-            >
-              {props.countries.rows &&
-                props.countries.rows.map((country) => (
-                  <option value={country.id}>{country.nombre}</option>
-                ))}
-            </select>
-          </div>
+        <div class="input">
+          <label class="input-label">Países de la actividad</label>
+          <select
+            required
+            name="countries"
+            id="countries"
+            class="input-field"
+            onChange={handleChangeCountries}
+          >
+            {props.countries.rows &&
+              props.countries.rows.map((country) => (
+                <option value={country.id}>{country.nombre}</option>
+              ))}
+          </select>
         </div>
         <div class="row">
           <div class="col-25">

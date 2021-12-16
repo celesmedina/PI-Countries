@@ -1,30 +1,39 @@
 /*  */
+:root {
+  --grey-med: #ddd;
+  --grey-light: #f7f7f7;
+  --grey-text-light: #717171;
+  --grey-text-dark: #222;
+  --pink: #ff385c;
+}
 
 .cards {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  margin: 3rem 3rem;
 }
 
 .pagination,
 .pagination li a {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  border: transparent;
 }
 .pagination li {
-  background: #f23b26;
+  background: #ff385c;
   list-style: none;
+  border-radius: 30px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
 }
 .pagination li a {
   text-decoration: none;
-  color: #fdfdfd;
   height: 50px;
   width: 50px;
-  font-size: 18px;
-  padding-top: 1px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: #fdfdfd;
+  font-size: 14px;
+  text-align: center;
+  /* border: 1px solid rgba(0, 0, 0, 0.25); */
   border-right-width: 0px;
   box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.35);
 }
@@ -56,7 +65,7 @@
 * {
   box-sizing: border-box;
 }
-body {
+/* body {
   margin: 0px;
   padding: 0px;
   width: 100vw;
@@ -64,24 +73,27 @@ body {
   justify-content: center;
   align-items: center;
   /* background-color: #130f40; */
-  font-family: "Lato" !important;
-}
+/* } */
 .search-box {
+  align-items: center;
+  justify-content: center;
   width: fit-content;
   height: fit-content;
   position: relative;
+
+  margin: 2em auto;
 }
 .input-search {
   height: 50px;
   width: 50px;
   border-style: none;
   padding: 10px;
-  font-size: 18px;
-  letter-spacing: 2px;
+  font-size: 14px;
   outline: none;
   border-radius: 25px;
   transition: all 0.5s ease-in-out;
-  background-color: #b32222;
+
+  background-color: #ff385c;
   padding-right: 40px;
   color: grey;
 }
@@ -119,4 +131,21 @@ body {
   background-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+select {
+  padding: 8px 16px;
+  outline: none;
+  background: transparent;
+  margin: 2px;
+}
+
+.outlined {
+  border: 1px solid #b0b0b0;
+}
+.outlined:hover {
+  border-color: var(--grey-text-dark);
+}
+.curved {
+  border-radius: 30px;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { connect } from "react-redux";
+
 import {
   getAllCountries,
   // getCountriesByOrder,
@@ -12,7 +13,7 @@ import {
 } from "../actions/Actions";
 import Card from "./Card";
 import "./Countries.css";
-
+import Navbar from "./Navbar";
 function Countries(props) {
   // const [searchTerm, setSearchTerm] = useState("");
   // const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -90,7 +91,7 @@ function Countries(props) {
   }
   return (
     <div>
-      <h1>Countries App</h1>
+      {/* <h1>Countries App</h1> */}
       <div class="search-box">
         <button class="btn-search">
           <FaSearch />
@@ -103,29 +104,33 @@ function Countries(props) {
           placeholder="Type to Search..."
         />
       </div>
-      <select onChange={handleOnChangeContinent}>
-        <option value="">-</option>
-        <option value="Americas">Americas</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europa</option>
-        <option value="Africa">Africa</option>
-        <option value="Oceania">Oceania</option>
-        <option value="Antartica">Antartida</option>
-      </select>
-      <select onChange={handleOnChangeOrder}>
-        <option value="nombre asc"> Alfabeticamente Ascendiente</option>
-        <option value="nombre desc">Alfabeticamente Descendiente</option>
-        <option value="poblacion asc">Población ascendente</option>
-        <option value="poblacion desc">Población descendiente</option>
-      </select>
-      <select onChange={handleOnChangeActivity}>
-        <option value="">-</option>
+      <div class="main__filters">
+        <select class="outlined curved" onChange={handleOnChangeContinent}>
+          <option value="">Elegí Continente</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europa</option>
+          <option value="Africa">Africa</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Antartica">Antartida</option>
+        </select>
+        <select class="outlined curved" onChange={handleOnChangeActivity}>
+          <option value="">Elegí actividad</option>
 
-        {props.activities.rows &&
-          props.activities.rows.map((activity) => (
-            <option value={activity.id}> {activity.nombre} </option>
-          ))}
-      </select>
+          {props.activities.rows &&
+            props.activities.rows.map((activity) => (
+              <option value={activity.id}> {activity.nombre} </option>
+            ))}
+        </select>
+        <select class="outlined curved" onChange={handleOnChangeOrder}>
+          <option value=""> Elegí orden</option>
+          <option value="nombre asc"> Alfabeticamente Ascendiente</option>
+          <option value="nombre desc">Alfabeticamente Descendiente</option>
+          <option value="poblacion asc">Población ascendente</option>
+          <option value="poblacion desc">Población descendiente</option>
+        </select>
+      </div>
+
       <div class="cards">
         {props.countries.count === 0 && <p> No hay países con ese nombre</p>}
         {props.countries.rows &&
@@ -146,14 +151,14 @@ function Countries(props) {
         {page > 1 && (
           <li class="icon">
             <a onClick={handleOnClickPrev}>
-              <span class="fas fa-angle-left"></span>Previous
+              <span class="fas fa-angle-left"></span>Anterior
             </a>
           </li>
         )}
         {page < props.countries.count / 10 && (
           <li class="icon">
             <a onClick={handleOnClickNext}>
-              Next<span class="fas fa-angle-right"></span>
+              Próximo<span class="fas fa-angle-right"></span>
             </a>
           </li>
         )}

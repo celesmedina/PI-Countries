@@ -17,6 +17,8 @@
 .pagination li a {
   display: flex;
   border: transparent;
+  align-items: center;
+  justify-content: center;
 }
 .pagination li {
   background: #ff385c;
@@ -148,4 +150,8 @@ select {
 }
 .curved {
   border-radius: 30px;
+}
+.noHayPaises {
+  display: inline;
+  text-align: center;
 }

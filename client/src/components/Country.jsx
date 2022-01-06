@@ -10,7 +10,7 @@ function Country(props) {
     props.getCountryByID(id);
   }, []);
 
-  if (!props.country) return "loading...";
+  if (!props.country.nombre) return "loading...";
 
   return (
     <div class="card-country">
@@ -21,42 +21,67 @@ function Country(props) {
         <img class="card-img" src={props.country.imagen} alt="" />
       </div>
       <div class="country-continent">
-        <p> Capital: {props.country.capital}</p>
+        <p>
+          {" "}
+          Capital: <span class="font-light">{props.country.capital}</span>
+        </p>
       </div>
       <div class="codigo-pais">
-        <p> Codigo de país: {props.country.id}</p>
+        <p>
+          {" "}
+          Codigo de país: <span class="font-light"> {props.country.id}</span>
+        </p>
       </div>
       <div class="country-subregion">
-        <p> Subregión: {props.country.subregion}</p>
+        <p>
+          {" "}
+          Subregión:<span class="font-light"> {props.country.subregion}</span>
+        </p>
       </div>
       <div class="country-area">
-        <p> Área: {props.country.area}</p>
+        <p>
+          {" "}
+          Área:<span class="font-light"> {props.country.area} km </span>
+        </p>
       </div>
       <div class="country-poblacion">
-        <p> Población: {props.country.poblacion}</p>
+        <p>
+          {" "}
+          Población:
+          <span class="font-light">
+            {" "}
+            {props.country.poblacion} personas
+          </span>{" "}
+        </p>
       </div>
       <div class="country-actividadesturisticas">
         <p> Actividades Turísticas</p>
-        {props.country.actividadesTuristicas ? (
+        {props.country.actividadesTuristicas &&
+        props.country.actividadesTuristicas.length ? (
           props.country.actividadesTuristicas.map((activity) => {
             return (
               <div>
                 <p> Nombre: {activity.nombre}</p>
                 <p> Dificultad: {activity.dificultad}</p>
-                <p> Duración: {activity.dificultad}</p>
-                <p> Temporada: {activity.dificultad}</p>
+                <p> Duración: {activity.dificultad} hs</p>
+                <p> Temporada: {activity.temporada}</p>
               </div>
             );
           })
         ) : (
-          <p>Este país no tiene actividades creadas</p>
+          <span class="font-light">
+            {" "}
+            Este país no tiene actividades creadas
+          </span>
         )}
       </div>
       {/* - [ ] Código de país de 3 letras (id) - [ ] Capital - [ ] Subregión - [ ]
       Área (Mostrarla en km2 o millones de km2) - [ ] Población - [ ]
       Actividades turísticas con toda su información asociada */}
-      <button>
-        <NavLink to="/countries">Atrás</NavLink>
+      <button class="buttonCountry">
+        <NavLink to="/countries" className="atras">
+          Atrás
+        </NavLink>
       </button>
     </div>
   );

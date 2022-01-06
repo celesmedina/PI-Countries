@@ -20,14 +20,14 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get("/countries", async function (req, res) {
   try {
-    let { name, order, type, page, continente, actividad } = req.query;
+    let { name, order, type, continente, actividad, subregion } = req.query;
     let countries = await getCountries(
       name,
       order,
       type,
-      page,
       continente,
-      actividad
+      actividad,
+      subregion
     );
     return res.json(countries);
   } catch (e) {

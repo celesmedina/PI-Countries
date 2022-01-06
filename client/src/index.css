@@ -48,3 +48,7 @@ body {
   background-color: #fcfcfe;
   /* padding: 0 2rem; */
 }
+
+.font-light {
+  font-family: "Circular Light";
+}

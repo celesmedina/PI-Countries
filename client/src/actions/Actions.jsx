@@ -8,12 +8,34 @@ export function getAllCountries(query) {
   };
 }
 
+export function orderByName(payload) {
+  return {
+    type: "ORDER_BY_NAME",
+    payload,
+  };
+}
+
+export function getPopulation(payload) {
+  return {
+    type: "GET_POPULATION",
+    payload,
+  };
+}
+
+export function cleanCountry() {
+  return {
+    type: "CLEAN_COUNTRY",
+  };
+}
+
 export function getCountryByID(id) {
   return function (dispatch) {
     return fetch("http://localhost:3001/countries/" + id)
       .then((response) => response.json())
       .then((json) => {
-        dispatch({ type: "GET_COUNTRY_ID", payload: json });
+        setTimeout(() => {
+          dispatch({ type: "GET_COUNTRY_ID", payload: json });
+        }, 3000);
       });
   };
 }
@@ -26,15 +48,15 @@ export function getCountryByID(id) {
 //       });
 //   };
 // }
-export function getPage(page) {
-  return function (dispatch) {
-    return fetch("http://localhost:3001/countries?page=" + page)
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch({ type: "GET_PAGE", payload: json });
-      });
-  };
-}
+// export function getPage(page) {
+//   return function (dispatch) {
+//     return fetch("http://localhost:3001/countries?page=" + page)
+//       .then((response) => response.json())
+//       .then((json) => {
+//         dispatch({ type: "GET_PAGE", payload: json });
+//       });
+//   };
+// }
 // export function getCountriesByPopulation(order) {
 //   return function (dispatch) {
 //     return fetch(

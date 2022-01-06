@@ -5,6 +5,11 @@
   --grey-text-dark: #222;
   --pink: #ff385c;
 }
+
+.header__nav a {
+  color: black;
+  text-decoration: none;
+}
 .header {
   height: 80px;
   padding: 0 24px;

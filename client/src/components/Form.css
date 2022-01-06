@@ -2,10 +2,10 @@
   max-width: 100%;
   display: block;
 }
-.card-form input {
+/* .card-form input {
   appearance: none;
   border-radius: 0;
-}
+} */
 .card-form {
   margin: 2rem auto;
   display: flex;
@@ -84,7 +84,7 @@
 .action {
   margin-top: 2rem;
 }
-.action-button {
+/* .action-button {
   font: inherit;
   font-size: 1.25rem;
   padding: 1em;
@@ -97,7 +97,7 @@
 }
 .action-button:focus {
   outline: 0;
-}
+} */
 .card-info {
   padding: 1rem 1rem;
   text-align: center;
@@ -108,4 +108,22 @@
   display: block;
   color: #ff385c;
   text-decoration: none;
+}
+
+.buttonActividad {
+  background: #ff385c;
+  border-radius: 30px;
+  margin: 5px;
+  color: white;
+  align-items: center;
+  margin-top: 4em;
+  padding: 1em;
+  font-size: 14px;
+  border-style: none;
+}
+
+.buttonActividad:hover {
+  background: #ff385dc4;
+  border-top-color: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
 }

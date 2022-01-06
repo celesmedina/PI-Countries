@@ -4,12 +4,14 @@ function Navbar() {
   return (
     <header className="header">
       <div class="header__logo">
-        <img src="world.png" alt="logo" />
+        <a href="/countries">
+          <img src="/world.png" alt="logo" />
+        </a>
       </div>
       <div class="header__nav">
         <button>
           {" "}
-          Home
+          <a href="/countries">Home</a>
           {/* <NavLink exact to="/countries">
             Home
           </NavLink> */}
@@ -17,7 +19,8 @@ function Navbar() {
         <span></span>
         <button>
           {/* <NavLink exact to="/activity"> */}
-          Crear actividades
+          <a href="/activity">Crear actividades</a>
+
           {/* </NavLink> */}
         </button>
       </div>

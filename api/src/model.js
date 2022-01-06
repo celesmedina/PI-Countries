@@ -43,15 +43,15 @@ module.exports = {
     await activity.addCountry(paises);
     return activity;
   },
-  async getCountries(name, order, type, page, continente, actividad) {
+  async getCountries(name, order, type, continente, actividad) {
     let filter = { where: {} };
 
-    if (page) {
-      let limit = 10;
-      let offset = (page - 1) * limit;
-      filter.offset = offset;
-      filter.limit = limit;
-    }
+    // if (page) {
+    //   let limit = 10;
+    //   let offset = (page - 1) * limit;
+    //   filter.offset = offset;
+    //   filter.limit = limit;
+    // }
 
     if (actividad) {
       filter.include = [

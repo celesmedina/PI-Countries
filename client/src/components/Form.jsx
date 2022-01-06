@@ -4,6 +4,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Form.css";
 function Forms(props) {
+  function getCountryName(country) {
+    let selectedCountry = props.countries.rows.find(
+      (pais) => pais.id === country
+    );
+    return selectedCountry.nombre;
+  }
   let query = "";
   useEffect(() => {
     props.getAllCountries(query);
@@ -15,6 +21,7 @@ function Forms(props) {
     temporada: "Verano",
     paises: [],
   });
+
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
@@ -37,6 +44,7 @@ function Forms(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          alert("Actividad creada");
           dispatch(createActivity(form));
         }}
         class="card-form"
@@ -49,6 +57,7 @@ function Forms(props) {
             id="fname"
             name="nombre"
             class="input-field"
+            value={form.nombre}
             onChange={handleChange}
           />
         </div>
@@ -62,6 +71,7 @@ function Forms(props) {
             id="lname"
             name="duracion"
             class="input-field"
+            value={form.duracion}
             onChange={handleChange}
           />
         </div>
@@ -88,9 +98,10 @@ function Forms(props) {
             id="temporada"
             class="input-field"
             name="temporada"
+            value={form.temporada}
             onChange={handleChange}
           >
-            <option value="Verano">Verano</option>
+            <option value="Verano"> Verano</option>
             <option value="Otoño">Otoño</option>
             <option value="Primavera">Primavera</option>
             <option value="Invierno">Invierno</option>
@@ -105,6 +116,7 @@ function Forms(props) {
             class="input-field"
             onChange={handleChangeCountries}
           >
+            <option value=""> - </option>
             {props.countries.rows &&
               props.countries.rows.map((country) => (
                 <option value={country.id}>{country.nombre}</option>
@@ -119,12 +131,16 @@ function Forms(props) {
           </div>
           <div class="col-75">
             {form.paises.map((pais) => (
-              <p>{pais}</p>
+              <p>{getCountryName(pais)}</p>
             ))}
           </div>
         </div>
         <div class="row">
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            class="buttonActividad"
+            value="Crear actividad"
+          />
         </div>
       </form>
     </div>

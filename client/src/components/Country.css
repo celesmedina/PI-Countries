@@ -9,14 +9,34 @@
   width: 70%;
   /* width: calc(25% - 30px); */
 }
-.card-country > img {
-  object-fit: fill;
-  min-width: 100%;
-  height: 200px;
+.card-img {
+  height: auto;
   width: 100%;
 }
 
 .country-name {
   font-weight: bolder;
   font-size: 2em;
+}
+
+.buttonCountry {
+  background: #ff385c;
+  border-radius: 30px;
+  margin: 5px;
+  color: white;
+  align-items: center;
+  margin-top: 1em;
+  padding: 1em;
+  font-size: 14px;
+  border-style: none;
+}
+
+.atras {
+  color: #ffffff;
+  text-decoration: none;
+}
+.buttonCountry:hover {
+  background: #ff385dc4;
+  border-top-color: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
 }

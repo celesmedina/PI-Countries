@@ -14,16 +14,9 @@ export default function Card(props) {
   };
   return (
     <div class="card" onClick={() => handleOnClick(props.id)}>
-      {/* <div class="country-name"> */}
       <img class="card-img" src={props.imagen} alt="" />
       <p> {props.nombre}</p>
       <p> {props.continente}</p>
-
-      {/* </div> */}
-      {/* <div> */}
-      {/* </div> */}
-      {/* <div class="country-continent"> */}
-      {/* </div> */}
     </div>
   );
 }

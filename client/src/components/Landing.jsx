@@ -5,8 +5,6 @@ function Landing() {
     <div>
       <head></head>
       <body>
-        {/* <img class="mapa" src="/mapa.jpeg" /> */}
-        {/* <div class="bienvenida">Bienvenida </div> */}
         <section class="full">
           <div class="full-inner">
             <div class="content">

@@ -1,18 +1,23 @@
 import { connect } from "react-redux";
 import { getAllCountries, createActivity } from "../actions/Actions";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Form.css";
 function Forms(props) {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countriesLoaded);
+  function validate() {
+    if (form.nombre === "" || form.duracion === "" || form.paises.length === 0)
+      return true;
+    return false;
+  }
   function getCountryName(country) {
-    let selectedCountry = props.countries.rows.find(
-      (pais) => pais.id === country
-    );
+    let selectedCountry = countries.rows.find((pais) => pais.id === country);
     return selectedCountry.nombre;
   }
   let query = "";
   useEffect(() => {
-    props.getAllCountries(query);
+    dispatch(getAllCountries(query));
   }, []);
   const [form, setForm] = useState({
     nombre: "",
@@ -22,19 +27,22 @@ function Forms(props) {
     paises: [],
   });
 
+  const handleOnClick = (event) => {
+    setForm({
+      ...form,
+      paises: form.paises.filter((pais) => pais !== event.target.value),
+    });
+  };
+
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
   const handleChangeCountries = (e) => {
-    // const paises = Array.from(
-    //   e.target.selectedOptions,
-    //   (option) => option.value
-    // );
-    // form.paises.push(e.target.value);
-    setForm({ ...form, paises: [...form.paises, e.target.value] });
+    setForm({
+      ...form,
+      paises: [...new Set([...form.paises, e.target.value])],
+    });
   };
-
-  const dispatch = useDispatch();
 
   return (
     <div class="card-form">
@@ -44,15 +52,18 @@ function Forms(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          alert("Actividad creada");
-          dispatch(createActivity(form));
+          if (validate()) {
+          } else {
+            dispatch(createActivity(form));
+            alert("Actividad creada");
+          }
         }}
         class="card-form"
       >
         <div class="input">
           <label class="input-label">Nombre de la actividad</label>
+          {form.nombre === "" && <p>Debe completar el nombre</p>}
           <input
-            required
             type="text"
             id="fname"
             name="nombre"
@@ -63,9 +74,9 @@ function Forms(props) {
         </div>
         <div class="input">
           <label class="input-label">Duración (en horas)</label>
+          {form.duracion === "" && <p>Debe completar duracion</p>}
 
           <input
-            required
             min="0"
             type="number"
             id="lname"
@@ -109,16 +120,19 @@ function Forms(props) {
         </div>
         <div class="input">
           <label class="input-label">Países de la actividad</label>
+          {form.paises.length === 0 && (
+            <p>Debe seleccionar un pais para crear la actividad</p>
+          )}
+
           <select
-            required
             name="countries"
             id="countries"
             class="input-field"
             onChange={handleChangeCountries}
           >
             <option value=""> - </option>
-            {props.countries.rows &&
-              props.countries.rows.map((country) => (
+            {countries.rows &&
+              countries.rows.map((country) => (
                 <option value={country.id}>{country.nombre}</option>
               ))}
           </select>
@@ -131,7 +145,12 @@ function Forms(props) {
           </div>
           <div class="col-75">
             {form.paises.map((pais) => (
-              <p>{getCountryName(pais)}</p>
+              <p>
+                {getCountryName(pais)}
+                <button type="button" onClick={handleOnClick} value={pais}>
+                  x
+                </button>
+              </p>
             ))}
           </div>
         </div>
@@ -146,16 +165,17 @@ function Forms(props) {
     </div>
   );
 }
-function mapStateToProps(state) {
-  return {
-    countries: state.countriesLoaded,
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     countries: state.countriesLoaded,
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getAllCountries: (query) => dispatch(getAllCountries(query)),
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     getAllCountries: (query) => dispatch(getAllCountries(query)),
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Forms);
+// export default connect(mapStateToProps, mapDispatchToProps)(Forms);
+export default Forms;

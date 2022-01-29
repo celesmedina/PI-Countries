@@ -50,6 +50,23 @@ module.exports = {
   },
   async getCountries(name, order, type, continente, actividad) {
     try {
+      const register = await Country.findAndCountAll();
+      if (register.count === 0) {
+        const response = await fetch("https://restcountries.com/v3/all");
+        const data = await response.json();
+        for (let i = 0; i < data.length; i++) {
+          const country = await Country.create({
+            id: getRandomString(3),
+            nombre: data[i].name.common,
+            imagen: data[i].flags[0] ? data[i].flags[0] : "",
+            continente: data[i].region,
+            capital: data[i].capital ? data[i].capital[0] : "",
+            subregion: data[i].subregion,
+            area: data[i].area,
+            poblacion: data[i].population,
+          });
+        }
+      }
       let filter = { where: {} };
 
       // if (page) {
@@ -83,23 +100,6 @@ module.exports = {
       }
       const register = await Country.findAndCountAll(filter);
       if (register.count === 0) {
-        console.log("antes del fetch:");
-        const response = await fetch("https://restcountries.com/v3/all");
-        console.log("despues del fetch:");
-        const data = await response.json();
-        for (let i = 0; i < data.length; i++) {
-          const country = await Country.create({
-            id: getRandomString(3),
-            nombre: data[i].name.common,
-            imagen: data[i].flags[0] ? data[i].flags[0] : "",
-            continente: data[i].region,
-            capital: data[i].capital ? data[i].capital[0] : "",
-            subregion: data[i].subregion,
-            area: data[i].area,
-            poblacion: data[i].population,
-          });
-        }
-
         return await Country.findAndCountAll(filter);
       } else {
         return register;

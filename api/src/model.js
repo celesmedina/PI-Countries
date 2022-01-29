@@ -50,8 +50,8 @@ module.exports = {
   },
   async getCountries(name, order, type, continente, actividad) {
     try {
-      const register = await Country.findAndCountAll();
-      if (register.count === 0) {
+      const register = await Country.findAll();
+      if (register.length === 0) {
         const response = await fetch("https://restcountries.com/v3/all");
         const data = await response.json();
         for (let i = 0; i < data.length; i++) {

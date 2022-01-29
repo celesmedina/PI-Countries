@@ -82,7 +82,7 @@ module.exports = {
         filter.order = [["poblacion", order]];
       }
       const register = await Country.findAndCountAll(filter);
-      if (register.length === 0) {
+      if (register.count === 0) {
         console.log("antes del fetch:");
         const response = await fetch("https://restcountries.com/v3/all");
         console.log("despues del fetch:");

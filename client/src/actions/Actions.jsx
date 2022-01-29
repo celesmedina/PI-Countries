@@ -1,7 +1,9 @@
 export function getAllCountries(query) {
   return async function (dispatch) {
     try {
-      const response = await fetch("http://localhost:3001/countries?" + query);
+      const response = await fetch(
+        "https://countries-app-phe9q.ondigitalocean.app/countries?" + query
+      );
       const json = await response.json();
       dispatch({ type: "GET_COUNTRIES", payload: json });
     } catch (e) {
@@ -24,7 +26,9 @@ export function cleanCountry() {
 
 export function getCountryByID(id) {
   return function (dispatch) {
-    return fetch("http://localhost:3001/countries/" + id)
+    return fetch(
+      "https://countries-app-phe9q.ondigitalocean.app/countries/" + id
+    )
       .then((response) => response.json())
       .then((json) => {
         setTimeout(() => {
@@ -37,7 +41,7 @@ export function getCountryByID(id) {
 
 export function createActivity(payload) {
   return function () {
-    return fetch("http://localhost:3001/activity", {
+    return fetch("https://countries-app-phe9q.ondigitalocean.app/activity", {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -51,7 +55,7 @@ export function createActivity(payload) {
 
 export function getActivity() {
   return function (dispatch) {
-    return fetch("http://localhost:3001/activity")
+    return fetch("https://countries-app-phe9q.ondigitalocean.app/activity")
       .then((response) => response.json())
       .then((json) => {
         dispatch({ type: "GET_ACTIVITY", payload: json });

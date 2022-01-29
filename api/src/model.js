@@ -102,9 +102,8 @@ module.exports = {
       } else {
         return register;
       }
-    } catch {
-      (e) =>
-        console.log("Se tuvo el siguiente error al crear la actividad" + e);
+    } catch (e) {
+      console.log("Se tuvo el siguiente error al crear la actividad" + e);
     }
   },
 

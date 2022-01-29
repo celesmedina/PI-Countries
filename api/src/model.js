@@ -83,7 +83,9 @@ module.exports = {
       }
       const register = await Country.findAndCountAll(filter);
       if (register.length === 0) {
+        console.log("antes del fetch:");
         const response = await fetch("https://restcountries.com/v3/all");
+        console.log("despues del fetch:");
         const data = await response.json();
         for (let i = 0; i < data.length; i++) {
           const country = await Country.create({

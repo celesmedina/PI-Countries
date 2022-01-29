@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { connect, useDispatch, useSelector } from "react-redux";
 
-import { getAllCountries, orderByName, getActivity } from "../actions/Actions";
+import { getAllCountries, getActivity } from "../actions/Actions";
 import Card from "./Card";
 import "./Countries.css";
 import Navbar from "./Navbar";
@@ -11,7 +11,11 @@ function Countries(props) {
   const activities = useSelector((state) => state.activities);
   let dispatch = useDispatch();
   let [page, setPage] = useState(1);
+  // let [filtroCliente, setFiltroCliente] = useState({
+  //   poblacion: "",
+  // });
   let [countriesPerPage, setCountriesPerPage] = useState(10);
+
   const indexOfLastCountry = page * countriesPerPage - 1;
   const indexOfFirstCountry =
     page === 1 ? 0 : indexOfLastCountry - countriesPerPage;
@@ -27,6 +31,13 @@ function Countries(props) {
   });
 
   let filteredCountries = countries.rows;
+  // if (filtroCliente) {
+  //   filteredCountries =
+  //     filteredCountries &&
+  //     (filtroCliente.poblacion === "menor"
+  //       ? filteredCountries.filter((pais) => pais.poblacion < 100000)
+  //       : filteredCountries.filter((pais) => pais.poblacion > 100000));
+  // }
   if (filtros.type === "nombre") {
     filteredCountries =
       filtros.order === "asc"
@@ -91,6 +102,10 @@ function Countries(props) {
     }
   }
 
+  // function handlePoblacion() {
+  //   setFiltroCliente({ ...filtroCliente, poblacion: "menor" });
+  // }
+
   function handleOnChange(e) {
     setFiltros({ ...filtros, nombrePais: e.target.value });
     setPage(1);
@@ -113,6 +128,7 @@ function Countries(props) {
   function handleOnChangeActivity(e) {
     setFiltros({ ...filtros, actividad: e.target.value });
   }
+
   return (
     <div>
       <div class="search-box">
@@ -151,6 +167,9 @@ function Countries(props) {
           <option value="poblacion asc">Población ascendente</option>
           <option value="poblacion desc">Población descendiente</option>
         </select>
+        {/* <button type="button" onClick={handlePoblacion}>
+          Ver países con menos de 100k habitantes
+        </button> */}
       </div>
 
       <div class="cards">

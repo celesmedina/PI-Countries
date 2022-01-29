@@ -5,7 +5,10 @@ const {
   CountryTuristicActivity,
 } = require("./db.js");
 const sequelize = require("sequelize");
+const { Op } = require("sequelize");
+
 const e = require("express");
+
 // const { getActivity } = require("../../client/src/actions/Actions.jsx");
 
 //Función para generar un ID random de 3 letras
@@ -44,19 +47,6 @@ module.exports = {
       activity.addCountry([...new Set(paises)]);
       return activity;
     });
-    // const activity = await Turistic_activity.create({
-    //   id: getRandomString(3),
-    //   nombre: nombre,
-    //   dificultad: dificultad,
-    //   duracion: duracion,
-    //   temporada: temporada,
-    // });
-
-    // await activity.addCountry(paises);
-    // return activity;
-    // } catch {
-    //   (e) => console.log("Posee un error al crear la actividad" + e);
-    // }
   },
   async getCountries(name, order, type, continente, actividad) {
     try {
@@ -76,10 +66,6 @@ module.exports = {
             where: { id: actividad },
           },
         ];
-        //   include: [{
-        //     model: Models.Orders,
-        //     where: {}
-        // }]
       }
 
       if (continente) {

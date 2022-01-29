@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./Landing.css";
 
 function Landing() {
@@ -9,7 +11,7 @@ function Landing() {
           <div class="full-inner">
             <div class="content">
               <h1>¡Bienvenidos!</h1>
-              <a href="/countries"> Ingresar </a>
+              <Link to="/countries"> Ingresar </Link>
             </div>
           </div>
         </section>

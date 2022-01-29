@@ -5,7 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-  process.env.DATABASE_URL + "?sslmode=no-verify" ||
+  process.env.DATABASE_URL ||
     `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`,
   {
     logging: false, // set to console.log to see the raw SQL queries
